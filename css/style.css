@@ -144,7 +144,15 @@ nav .nav-content .add-todo-btn {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: #00000099;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.addToDoModal {
+  position: fixed;
+  inset: 0;
+  background: #00000099;
   display: none;
   justify-content: center;
   align-items: center;
@@ -169,10 +177,36 @@ nav .nav-content .add-todo-btn {
   border: none;
   font-size: 30px;
   cursor: pointer;
+
+}
+.overlay .modal header h2 {
+  color: var(--primary-color);
+  text-align: center;
+  width: 100%;
+}
+.addToDoModal form input,
+textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.addToDoModal form .to-do-btns {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 20px;
+}
+.addToDoModal form .add-Todo-close-btn {
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 5px 10px;
   
 }
-.overlay .modal header h2{
- color: var(--primary-color);
- text-align: center;
- width: 100%;
+.addToDoModal form .add-todo-btn {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 5px 10px;
+  color: var(--fifth-color);
 }
