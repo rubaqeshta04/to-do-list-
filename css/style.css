@@ -29,7 +29,7 @@ nav .nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 35%;
+  width: 43%;
 }
 nav .nav-content p {
   font-weight: 400;
@@ -39,7 +39,14 @@ nav .nav-content p {
 nav .nav-content span {
   color: var(--primary-color);
 }
-
+nav .nav-content .delete-all {
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px red solid;
+  background-color: var(--fifth-color);
+  color: red;
+  padding: 8px 12px;
+}
 nav .nav-content select {
   font-weight: 300;
   font-size: 16px;
@@ -57,12 +64,11 @@ nav .nav-content .add-todo-btn {
   color: var(--fifth-color);
   padding: 8px 12px;
 }
-hr{
+hr {
   margin: 0 150px;
   background-color: var(--primary-color);
   height: 1px;
   border: none;
-
 }
 .cards {
   display: flex;
@@ -183,7 +189,6 @@ hr{
   border: none;
   font-size: 30px;
   cursor: pointer;
-
 }
 .overlay .modal header h2 {
   color: var(--primary-color);
@@ -208,7 +213,6 @@ textarea {
   background-color: var(--secondary-color);
   border: none;
   padding: 5px 10px;
-  
 }
 .addToDoModal form .add-todo-btn {
   background-color: var(--primary-color);
