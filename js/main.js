@@ -48,3 +48,24 @@ deleteCardBtn.addEventListener("click", () => {
     }
   });
 });
+
+const deleteAll = document.getElementById('delete-all')
+deleteAll.addEventListener('click' ,() => {
+    Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete all!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your ToDos has been deleted.",
+        icon: "success",
+      });
+    }
+  });
+})
