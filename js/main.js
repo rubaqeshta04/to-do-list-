@@ -1,3 +1,13 @@
+const addTodoBtn = document.getElementById("add-to-do-btn");
+const addToDoModal = document.getElementById("add-todo");
+const closeAddTodoModal = document.getElementById("closeAddTodoModal");
+addTodoBtn.addEventListener("click", () => {
+  addToDoModal.style.display = "flex";
+});
+closeAddTodoModal.addEventListener("click", () => {
+  addToDoModal.style.display = "none";
+});
+
 const openBtn = document.getElementById("openModal");
 const closeBtn = document.getElementById("closeModal");
 const overlay = document.getElementById("overlay");
@@ -18,15 +28,7 @@ overlay.addEventListener("click", (e) => {
   }
 });
 
-const addTodoBtn = document.getElementById("add-to-do-btn");
-const addToDoModal = document.getElementById("add-todo");
-const closeAddTodoModal = document.getElementById("closeAddTodoModal");
-addTodoBtn.addEventListener("click", () => {
-  addToDoModal.style.display = "flex";
-});
-closeAddTodoModal.addEventListener("click", () => {
-  addToDoModal.style.display = "none";
-});
+
 
 const deleteCardBtn = document.getElementById("delete-card-btn");
 deleteCardBtn.addEventListener("click", () => {
@@ -70,6 +72,7 @@ deleteAll.addEventListener('click' ,() => {
   });
 })
 const AddTodoForm = document.getElementById('add-todo-form');
+let todos = JSON.parse(localStorage.getItem("todos")) || []; // اذا هي اصلا مش موجودة todos
 AddTodoForm.addEventListener('submit' , (e) =>{
   e.preventDefault()
   console.log("ruba" , e.target);
@@ -78,7 +81,6 @@ AddTodoForm.addEventListener('submit' , (e) =>{
   const description = formData.get("content")
   const todoDate = formData.get("date")
   console.log(title ,description ,todoDate)
-  let todos = JSON.parse(localStorage.getItem("todos")) || []; // اذا هي اصلا مش موجودة todos
   const newTodo = {
     title,
     description,
@@ -89,3 +91,8 @@ AddTodoForm.addEventListener('submit' , (e) =>{
   localStorage.setItem('todos', JSON.stringify(todos));
   e.target.reset()
 })
+
+
+const cards = document.getElementById("cards");
+
+
