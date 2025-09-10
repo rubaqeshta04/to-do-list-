@@ -69,3 +69,23 @@ deleteAll.addEventListener('click' ,() => {
     }
   });
 })
+const AddTodoForm = document.getElementById('add-todo-form');
+AddTodoForm.addEventListener('submit' , (e) =>{
+  e.preventDefault()
+  console.log("ruba" , e.target);
+  const formData = new FormData(e.target);
+  const title = formData.get("title")
+  const description = formData.get("content")
+  const todoDate = formData.get("date")
+  console.log(title ,description ,todoDate)
+  let todos = JSON.parse(localStorage.getItem("todos")) || []; // اذا هي اصلا مش موجودة todos
+  const newTodo = {
+    title,
+    description,
+    todoDate,
+    isChecked: false
+  }
+  todos.push(newTodo);
+  localStorage.setItem('todos', JSON.stringify(todos));
+  e.target.reset()
+})
