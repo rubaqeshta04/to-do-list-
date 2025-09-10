@@ -1,3 +1,13 @@
+const addTodoBtn = document.getElementById("add-to-do-btn");
+const addToDoModal = document.getElementById("add-todo");
+const closeAddTodoModal = document.getElementById("closeAddTodoModal");
+addTodoBtn.addEventListener("click", () => {
+  addToDoModal.style.display = "flex";
+});
+closeAddTodoModal.addEventListener("click", () => {
+  addToDoModal.style.display = "none";
+});
+
 const openBtn = document.getElementById("openModal");
 const closeBtn = document.getElementById("closeModal");
 const overlay = document.getElementById("overlay");
@@ -18,15 +28,7 @@ overlay.addEventListener("click", (e) => {
   }
 });
 
-const addTodoBtn = document.getElementById("add-to-do-btn");
-const addToDoModal = document.getElementById("add-todo");
-const closeAddTodoModal = document.getElementById("closeAddTodoModal");
-addTodoBtn.addEventListener("click", () => {
-  addToDoModal.style.display = "flex";
-});
-closeAddTodoModal.addEventListener("click", () => {
-  addToDoModal.style.display = "none";
-});
+
 
 const deleteCardBtn = document.getElementById("delete-card-btn");
 deleteCardBtn.addEventListener("click", () => {
