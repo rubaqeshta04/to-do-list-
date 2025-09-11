@@ -82,10 +82,9 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: fit-content;
-  max-width: 400px;
+  width: 400px;
   background-color: var(--secondary-color);
-  height: fit-content;
+  height: 200px;
   flex-direction: column;
   padding: 20px;
 }
@@ -120,13 +119,19 @@ hr {
   width: 30px;
   height: 30px;
 }
-.cards .card .content p {
+.Content {
+  width: 100%;
+  overflow: hidden;
+}
+.descP {
   font-weight: 300;
   font-size: 18px;
   color: var(--fourth-color);
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Limit to 2 lines */
   -webkit-box-orient: vertical;
+  white-space: normal; /* allows wrapping */
+  word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
 }
