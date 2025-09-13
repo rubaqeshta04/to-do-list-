@@ -11,92 +11,109 @@ AddTodoForm.addEventListener("submit", (e) => {
     description,
     todoDate,
     isChecked: false,
-    id : Date.now(),
+    id: Date.now(),
   };
   todos.push(newTodo);
   localStorage.setItem("todos", JSON.stringify(todos));
   e.target.reset();
 });
 
-const todosArray = Array.from(todos);
-const cards = document.getElementById("cards");
-if (todosArray.length === 0) {
-  const errorMsg = document.createElement("p");
-  cards.appendChild(errorMsg);
-  errorMsg.style.color = "red";
-  errorMsg.textContent = "no todos";
-  errorMsg.style.margin = " 20px 40%";
-  errorMsg.style.fontSize = " 30px";
-  errorMsg.style.fontWeight = " bold";
-} else {
-  todosArray.forEach((todo) => {
-    const card = document.createElement("div");
-    cards.appendChild(card);
-    card.classList.add("card");
+const checkTodo = (id) => {
+  todos = todos.map((todo) =>
+    String(todo.id) === String(id)
+      ? { ...todo, isChecked: !todo.isChecked }
+      : todo
+  );
 
-    const cardHeader = document.createElement("div");
-    card.appendChild(cardHeader);
-    cardHeader.classList.add("card-header");
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+const renderTodos = () => {
+  const todosArray = Array.from(todos);
+  const cards = document.getElementById("cards");
+  if (todosArray.length === 0) {
+    const errorMsg = document.createElement("p");
+    cards.appendChild(errorMsg);
+    errorMsg.style.color = "red";
+    errorMsg.textContent = "no todos";
+    errorMsg.style.margin = " 20px 40%";
+    errorMsg.style.fontSize = " 30px";
+    errorMsg.style.fontWeight = " bold";
+  } else {
+    todosArray.forEach((todo) => {
+      const card = document.createElement("div");
+      cards.appendChild(card);
+      card.classList.add("card");
 
-    const checkbox = document.createElement("div");
-    checkbox.classList.add("checkbox");
-    cardHeader.appendChild(checkbox);
+      const cardHeader = document.createElement("div");
+      card.appendChild(cardHeader);
+      cardHeader.classList.add("card-header");
 
-    const checkInput = document.createElement("input");
-    checkInput.type = "checkbox";
-    checkbox.appendChild(checkInput);
+      const checkbox = document.createElement("div");
+      checkbox.classList.add("checkbox");
+      cardHeader.appendChild(checkbox);
 
-    const cardTitle = document.createElement("div");
-    cardTitle.classList.add("cardTitle");
-    cardHeader.appendChild(cardTitle);
+      const checkInput = document.createElement("input");
+      checkInput.type = "checkbox";
+      checkbox.appendChild(checkInput);
+      checkbox.isChecked = todo.isChecked;
 
-    const cardH2Title = document.createElement("h2");
-    cardTitle.appendChild(cardH2Title);
-    cardH2Title.textContent = todo.title;
+      checkbox.onchange = () => checkTodo(todo.id);
 
-    const cardBtns = document.createElement("div");
-    cardBtns.classList.add("card-btns");
-    cardHeader.appendChild(cardBtns);
+      const cardTitle = document.createElement("div");
+      cardTitle.classList.add("cardTitle");
+      cardHeader.appendChild(cardTitle);
 
-    const editBtn = document.createElement("button");
-    cardBtns.appendChild(editBtn);
+      const cardH2Title = document.createElement("h2");
+      cardTitle.appendChild(cardH2Title);
+      cardH2Title.textContent = todo.title;
 
-    const editImg = document.createElement("img");
-    editImg.src = "assets/edit-cover.svg";
-    editImg.alt = "edit-cover";
-    editBtn.appendChild(editImg);
+      const cardBtns = document.createElement("div");
+      cardBtns.classList.add("card-btns");
+      cardHeader.appendChild(cardBtns);
 
-    const deleteBtn = document.createElement("button");
-    cardBtns.appendChild(deleteBtn);
+      const editBtn = document.createElement("button");
+      cardBtns.appendChild(editBtn);
 
-    const deleteImg = document.createElement("img");
-    deleteImg.src = "assets/delete-icon.svg";
-    deleteImg.alt = "delete-icon";
-    deleteBtn.appendChild(deleteImg);
+      const editImg = document.createElement("img");
+      editImg.src = "assets/edit-cover.svg";
+      editImg.alt = "edit-cover";
+      editBtn.appendChild(editImg);
 
-    const cardContent = document.createElement("div");
-    cardContent.classList.add("Content");
-    card.appendChild(cardContent);
+      const deleteBtn = document.createElement("button");
+      cardBtns.appendChild(deleteBtn);
+      deleteBtn.id = "delete-card-btn";
 
-    const cardContentP = document.createElement("p");
-    cardContent.appendChild(cardContentP);
-    cardContentP.textContent = todo.description;
-    cardContentP.classList = "descP";
+      const deleteImg = document.createElement("img");
+      deleteImg.src = "assets/delete-icon.svg";
+      deleteImg.alt = "delete-icon";
+      deleteBtn.appendChild(deleteImg);
 
-    const cardFooter = document.createElement("div");
-    cardFooter.classList.add("card-footer");
-    card.appendChild(cardFooter);
+      const cardContent = document.createElement("div");
+      cardContent.classList.add("Content");
+      card.appendChild(cardContent);
 
-    const cardFooterP = document.createElement("p");
-    cardFooter.appendChild(cardFooterP);
-    cardFooter.textContent = todo.todoDate;
+      const cardContentP = document.createElement("p");
+      cardContent.appendChild(cardContentP);
+      cardContentP.textContent = todo.description;
+      cardContentP.classList = "descP";
 
-    const cardFooterBtn = document.createElement("button");
-    cardFooterBtn.setAttribute("id", "openModal");
-    cardFooter.appendChild(cardFooterBtn);
-    cardFooterBtn.textContent = "show";
-  });
-}
+      const cardFooter = document.createElement("div");
+      cardFooter.classList.add("card-footer");
+      card.appendChild(cardFooter);
+
+      const cardFooterP = document.createElement("p");
+      cardFooter.appendChild(cardFooterP);
+      cardFooter.textContent = todo.todoDate;
+
+      const cardFooterBtn = document.createElement("button");
+      cardFooterBtn.setAttribute("id", "openModal");
+      cardFooter.appendChild(cardFooterBtn);
+      cardFooterBtn.textContent = "show";
+    });
+  }
+};
+
+renderTodos();
 
 const addTodoBtn = document.getElementById("add-to-do-btn");
 const addToDoModal = document.getElementById("add-todo");
