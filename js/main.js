@@ -16,6 +16,7 @@ AddTodoForm.addEventListener("submit", (e) => {
   todos.push(newTodo);
   localStorage.setItem("todos", JSON.stringify(todos));
   e.target.reset();
+  window.location.reload();
 });
 
 const checkTodo = (id) => {
