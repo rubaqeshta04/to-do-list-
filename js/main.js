@@ -160,7 +160,7 @@ const closeBtn = document.getElementById("closeModal");
 const overlay = document.getElementById("overlay");
 
 // Open modal
-openBtn.addEventListener("click", () => {
+openBtn?.addEventListener("click", () => {
   overlay.style.display = "flex";
 });
 
@@ -176,6 +176,11 @@ overlay.addEventListener("click", (e) => {
   }
 });
 
+const deleteAllTodos = () => {
+  localStorage.removeItem("todos");
+  document.location.reload();
+};
+
 const deleteAll = document.getElementById("delete-all");
 deleteAll.addEventListener("click", () => {
   Swal.fire({
@@ -188,6 +193,7 @@ deleteAll.addEventListener("click", () => {
     confirmButtonText: "Yes, delete all!",
   }).then((result) => {
     if (result.isConfirmed) {
+      deleteAllTodos();
       Swal.fire({
         title: "Deleted!",
         text: "Your ToDos has been deleted.",
