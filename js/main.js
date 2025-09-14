@@ -28,6 +28,34 @@ const checkTodo = (id) => {
 
   localStorage.setItem("todos", JSON.stringify(todos));
 };
+
+const deleteTodo = (id) => {
+  todos = todos.filter((todo) => todo.id !== id);
+  localStorage.setItem("todos", JSON.stringify(todos));
+  document.location.reload();
+};
+
+const swalDelete = (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteTodo(id);
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+    }
+  });
+};
+
 const renderTodos = () => {
   const todosArray = Array.from(todos);
   const cards = document.getElementById("cards");
@@ -83,6 +111,7 @@ const renderTodos = () => {
       const deleteBtn = document.createElement("button");
       cardBtns.appendChild(deleteBtn);
       deleteBtn.id = "delete-card-btn";
+      deleteBtn.onclick = () => swalDelete(todo.id);
 
       const deleteImg = document.createElement("img");
       deleteImg.src = "assets/delete-icon.svg";
@@ -145,27 +174,6 @@ overlay.addEventListener("click", (e) => {
   if (e.target === overlay) {
     overlay.style.display = "none";
   }
-});
-
-const deleteCardBtn = document.getElementById("delete-card-btn");
-deleteCardBtn.addEventListener("click", () => {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success",
-      });
-    }
-  });
 });
 
 const deleteAll = document.getElementById("delete-all");
