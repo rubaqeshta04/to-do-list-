@@ -202,3 +202,6 @@ deleteAll.addEventListener("click", () => {
     }
   });
 });
+
+const todoCount = document.getElementById("todo-count");
+todoCount.textContent = todos.length;
