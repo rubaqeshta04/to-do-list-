@@ -17,9 +17,10 @@
       </div>
       <div class="nav-content">
         <p>You have <span id="todo-count">  </span> todos</p>
-        <select>
-          <option value="1">descending</option>
-          <option value="2">Ascending</option>
+        <select onchange="filterTodos(this.value)">
+          <option value="all">All</option>
+          <option value="todo">Todo</option>
+          <option value="done">Done</option>
         </select>
         <button class="delete-all" id="delete-all">Delete All</button>
         <button class="add-todo-btn" id="add-to-do-btn">Add ToDo</button>
