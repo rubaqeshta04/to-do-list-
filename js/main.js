@@ -21,6 +21,8 @@ AddTodoForm.addEventListener("submit", (e) => {
   localStorage.setItem("todos", JSON.stringify(todos));
   e.target.reset();
   filterTodos(currentFilter); // Re-render with current filter
+  const addToDoModal = document.getElementById("add-todo");
+  addToDoModal.style.display = "none";
 });
 
 // Toggle todo checkbox
