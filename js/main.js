@@ -67,7 +67,7 @@ const swalDelete = (id) => {
 const renderTodos = (allTodos) => {
   const todosArray = Array.from(allTodos);
   const cards = document.getElementById("cards");
-  cards.innerHTML = ""; 
+  cards.innerHTML = "";
 
   if (todosArray.length === 0) {
     const errorMsg = document.createElement("p");
@@ -93,10 +93,10 @@ const renderTodos = (allTodos) => {
 
       const checkInput = document.createElement("input");
       checkInput.type = "checkbox";
-      checkInput.checked = todo.isChecked; 
+      checkInput.checked = todo.isChecked;
       checkbox.appendChild(checkInput);
 
-      checkInput.onchange = () => checkTodo(todo.id); 
+      checkInput.onchange = () => checkTodo(todo.id);
 
       const cardTitle = document.createElement("div");
       cardTitle.classList.add("cardTitle");
@@ -111,7 +111,11 @@ const renderTodos = (allTodos) => {
       cardHeader.appendChild(cardBtns);
 
       const editBtn = document.createElement("button");
+      const editTodoModal = document.getElementById("edit-todo");
       cardBtns.appendChild(editBtn);
+      editBtn.addEventListener("click", () => {
+        editTodoModal.style.display = "flex";
+      });
 
       const editImg = document.createElement("img");
       editImg.src = "assets/edit-cover.svg";
@@ -221,8 +225,8 @@ todoCount.textContent = todos.length;
 
 // Filter todos
 const filterTodos = (filterType) => {
-  currentFilter = filterType; 
-    if (filterType === "todo") {
+  currentFilter = filterType;
+  if (filterType === "todo") {
     renderTodos(todos.filter((todo) => !todo.isChecked));
   } else if (filterType === "done") {
     renderTodos(todos.filter((todo) => todo.isChecked));
