@@ -16,7 +16,7 @@
         <h1>Todo List</h1>
       </div>
       <div class="nav-content">
-        <p>You have <span id="todo-count">  </span> todos</p>
+        <p>You have <span id="todo-count"> </span> todos</p>
         <select onchange="filterTodos(this.value)">
           <option value="all">All</option>
           <option value="todo">Todo</option>
@@ -74,6 +74,42 @@
                 </button>
                 <button class="add-todo-btn" id="add-todo-btn" type="submit">
                   Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- edit todo modal -->
+      <div class="addToDoModal" id="edit-todo">
+        <div class="modal">
+          <header>
+            <h2>edit your task</h2>
+          </header>
+          <div class="all-content">
+            <form id="edit-todo-form">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                placeholder="Enter your task title"
+                name="title"
+                required
+              />
+              <label for="Content">Description</label>
+              <textarea
+                name="Content"
+                placeholder="Enter the task details..."
+                required
+              ></textarea>
+              <label for="date"> Task Date</label>
+              <input type="date" name="date" required />
+              <div class="to-do-btns">
+                <button class="add-Todo-close-btn" id="closeEditTodoModal">
+                  Cancle
+                </button>
+                <button class="add-todo-btn" id="edit-todo-btn" type="submit">
+                  Update
                 </button>
               </div>
             </form>
