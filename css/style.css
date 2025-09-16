@@ -166,6 +166,18 @@ hr {
   justify-content: center;
   align-items: center;
 }
+
+#todo-description {
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--fourth-color);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal; /* allows wrapping */
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .addToDoModal {
   position: fixed;
   inset: 0;

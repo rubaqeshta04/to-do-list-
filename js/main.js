@@ -150,9 +150,16 @@ const renderTodos = (allTodos) => {
       cardFooterP.textContent = todo.todoDate;
 
       const cardFooterBtn = document.createElement("button");
-      cardFooterBtn.setAttribute("id", "openModal");
+      const todoTitle = document.getElementById("todo-title");
+      const todoDescription = document.getElementById("todo-description");
+      cardFooterBtn.id = "openModal";
       cardFooter.appendChild(cardFooterBtn);
       cardFooterBtn.textContent = "show";
+      cardFooterBtn?.addEventListener("click", () => {
+        overlay.style.display = "flex";
+        todoTitle.textContent = todo.title;
+        todoDescription.textContent = todo.description;
+      });
     });
   }
 };
@@ -172,13 +179,8 @@ closeAddTodoModal.addEventListener("click", () => {
 });
 
 // Show modal
-const openBtn = document.getElementById("openModal");
 const closeBtn = document.getElementById("closeModal");
 const overlay = document.getElementById("overlay");
-
-openBtn?.addEventListener("click", () => {
-  overlay.style.display = "flex";
-});
 
 closeBtn.addEventListener("click", () => {
   overlay.style.display = "none";
