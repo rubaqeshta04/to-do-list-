@@ -65,6 +65,7 @@ const swalDelete = (id) => {
   });
 };
 
+let currentTodoToEdit = null;
 // Render todos
 const renderTodos = (allTodos) => {
   const todosArray = Array.from(allTodos);
@@ -115,9 +116,23 @@ const renderTodos = (allTodos) => {
       const editBtn = document.createElement("button");
       const editTodoModal = document.getElementById("edit-todo");
       cardBtns.appendChild(editBtn);
-      editBtn.addEventListener("click", () => {
+      editBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         editTodoModal.style.display = "flex";
+        const titleValue = document.getElementById("title-value");
+        const descValue = document.getElementById("desc-value");
+        const dateValue = document.getElementById("date-value");
+        titleValue.value = todo.title;
+        descValue.value = todo.description;
+        dateValue.value = todo.todoDate;
+        currentTodoToEdit = todo.id;
+        console.log("rrr", currentTodoToEdit);
       });
+      const closeEditTodoModal = document.getElementById("closeEditTodoModal");
+      closeEditTodoModal.addEventListener("click", () => {
+        editTodoModal.style.display = "none";
+      });
+      editTodoModal.style.cursor = "pointer";
 
       const editImg = document.createElement("img");
       editImg.src = "assets/edit-cover.svg";
@@ -238,3 +253,26 @@ const filterTodos = (filterType) => {
     renderTodos(todos);
   }
 };
+
+const editTodoForm = document.getElementById("edit-todo-form");
+const editTodo = document.getElementById("edit-todo");
+editTodoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const titleValue = document.getElementById("title-value").value;
+  const descValue = document.getElementById("desc-value").value;
+  const dateValue = document.getElementById("date-value").value;
+  const todosArray = Array.from(todos);
+  todosArray.map((todo) => {
+    if (todo.id === currentTodoToEdit) {
+      todo.title = titleValue;
+      todo.description = descValue;
+      todo.dateValue = dateValue;
+      console.log(todo);
+    } else {
+      todo;
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+  editTodo.style.display = "none";
+  renderTodos(todos);
+});

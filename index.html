@@ -87,20 +87,22 @@
                 type="text"
                 placeholder="Enter your task title"
                 name="title"
+                id="title-value"
                 required
               />
               <label for="Content">Description</label>
               <textarea
                 name="Content"
+                id="desc-value"
                 placeholder="Enter the task details..."
                 required
               ></textarea>
               <label for="date"> Task Date</label>
-              <input type="date" name="date" required />
+              <input type="date" name="date" id="date-value" required />
               <div class="to-do-btns">
-                <button class="add-Todo-close-btn" id="closeEditTodoModal">
+                <a class="add-Todo-close-btn" id="closeEditTodoModal">
                   Cancle
-                </button>
+                </a>
                 <button class="add-todo-btn" id="edit-todo-btn" type="submit">
                   Update
                 </button>
