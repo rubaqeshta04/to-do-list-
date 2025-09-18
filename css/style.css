@@ -11,6 +11,7 @@
   --fourth-color: #515151;
   --fifth-color: #fff;
 }
+/* Base styles (Desktop) */
 nav {
   display: flex;
   justify-content: space-between;
@@ -19,6 +20,7 @@ nav {
   height: 120px;
   padding: 0 150px 10px 150px;
 }
+
 nav .logo h1 {
   font-weight: 900;
   font-size: 30px;
@@ -31,38 +33,104 @@ nav .nav-content {
   align-items: center;
   width: 43%;
 }
+
 nav .nav-content p {
   font-weight: 400;
   font-size: 25px;
   color: var(--fourth-color);
 }
+
 nav .nav-content span {
   color: var(--primary-color);
 }
-nav .nav-content .delete-all {
+
+nav .nav-content .delete-all,
+nav .nav-content .add-todo-btn {
   font-weight: 400;
   font-size: 16px;
-  border: 1px red solid;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+nav .nav-content .delete-all {
+  border: 1px solid red;
   background-color: var(--fifth-color);
   color: red;
-  padding: 8px 12px;
 }
+
+nav .nav-content .add-todo-btn {
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--fifth-color);
+}
+
 nav .nav-content select {
   font-weight: 300;
   font-size: 16px;
   padding: 8px 12px;
 }
+
 nav .nav-content select option {
   font-weight: 200;
   font-size: 14px;
 }
-nav .nav-content .add-todo-btn {
-  font-weight: 400;
-  font-size: 16px;
-  border: none;
-  background-color: var(--primary-color);
-  color: var(--fifth-color);
-  padding: 8px 12px;
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  nav {
+    padding: 0 50px 10px 50px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  nav .nav-content {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  nav .nav-content p {
+    font-size: 20px;
+  }
+
+  nav .nav-content select,
+  nav .nav-content .delete-all,
+  nav .nav-content .add-todo-btn {
+    font-size: 14px;
+    padding: 6px 10px;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 0 20px 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav .logo h1 {
+    font-size: 24px;
+  }
+
+  nav .nav-content {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  nav .nav-content p {
+    font-size: 18px;
+  }
+
+  nav .nav-content select,
+  nav .nav-content .delete-all,
+  nav .nav-content .add-todo-btn {
+    font-size: 13px;
+    padding: 5px 8px;
+    width: 100%;
+  }
 }
 hr {
   margin: 0 150px;
@@ -263,4 +331,16 @@ textarea {
   border: none;
   padding: 5px 10px;
   color: var(--fifth-color);
+}
+
+@media only screen and (max-width: 1487px) {
+  nav {
+    padding: 0 50px 10px 50px;
+  }
+  .cards {
+    padding: 30px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
 }
