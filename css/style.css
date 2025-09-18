@@ -88,34 +88,61 @@ hr {
   flex-direction: column;
   padding: 20px;
 }
-.cards .card .card-header {
+.cards .checked-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  background-color: #8f718f;
+  height: 200px;
+  flex-direction: column;
+  padding: 20px;
+}
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.cards .card .card-header .checkbox input {
+.card-header .checkbox input {
   width: 30px;
   height: 30px;
 }
-.cards .card .card-header .card-title {
+.card-header .card-title {
   font-weight: 500;
   font-size: 24px;
   color: var(--primary-color);
+  width: 60%;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
-.cards .card .card-header .card-btns {
+.card-header .checked-card-title {
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--primary-color);
+  width: 60%;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  text-decoration: line-through;
+  text-decoration-color: #fff;
+}
+.card-header .card-btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 20%;
 }
-.cards .card .card-header .card-btns button {
+.card-header .card-btns button {
   background: none;
   border: none;
   width: fit-content;
   height: fit-content;
 }
-.cards .card .card-header .card-btns button img {
+.card-header .card-btns button img {
   width: 30px;
   height: 30px;
 }
@@ -135,25 +162,25 @@ hr {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.cards .card .card-footer {
+.card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding-top: 20px;
 }
-.cards .card .card-footer p {
+.card-footer p {
   font-weight: 200px;
   font-size: 17px;
   color: var(--fourth-color);
 }
-.cards .card .card-footer button {
+.card-footer button {
   padding: 5px 15px;
   background-color: var(--primary-color);
   color: var(--fifth-color);
   border: none;
 }
-.cards .card .card-footer button:hover {
+.card-footer button:hover {
   background-color: #af5c8a;
   color: var(--fifth-color);
 }

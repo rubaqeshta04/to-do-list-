@@ -84,7 +84,10 @@ const renderTodos = (allTodos) => {
     todosArray.forEach((todo) => {
       const card = document.createElement("div");
       cards.appendChild(card);
-      card.classList.add("card");
+
+      todo.isChecked
+        ? card.classList.add("checked-card")
+        : card.classList.add("card");
 
       const cardHeader = document.createElement("div");
       card.appendChild(cardHeader);
@@ -102,8 +105,11 @@ const renderTodos = (allTodos) => {
       checkInput.onchange = () => checkTodo(todo.id);
 
       const cardTitle = document.createElement("div");
-      cardTitle.classList.add("cardTitle");
+      cardTitle.classList.add("card-title");
       cardHeader.appendChild(cardTitle);
+      todo.isChecked
+        ? cardTitle.classList.add("checked-card-title")
+        : cardTitle.classList.add("card-title");
 
       const cardH2Title = document.createElement("h2");
       cardTitle.appendChild(cardH2Title);
